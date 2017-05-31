@@ -18,5 +18,11 @@ namespace Plugin.Clipboard.Abstractions
         /// </summary>
         /// <returns></returns>
         string GetText();
+
+        /// <summary>
+        /// Sets the clipboard image.
+        /// </summary>
+        /// <param name="imageBytes">Image bytes.</param>
+        void SetImage(byte[] imageBytes);
   }
 }

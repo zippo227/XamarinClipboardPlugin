@@ -1,6 +1,8 @@
 using Plugin.Clipboard.Abstractions;
 using System;
 using UIKit;
+using Foundation;
+using System.Diagnostics;
 
 namespace Plugin.Clipboard
 {
@@ -20,5 +22,21 @@ namespace Plugin.Clipboard
             UIPasteboard clipboard = UIPasteboard.General;
             clipboard.String = data;
         }
+
+		public void SetImage(byte[] imageBytes)
+		{
+			if (imageBytes == null)
+			{
+				Debug.WriteLine("unable to use null imageBytes");
+				return;
+			}
+
+			UIPasteboard clipboard = UIPasteboard.General;
+
+			NSData imgData = NSData.FromArray(imageBytes);
+			UIImage image = UIImage.LoadFromData(imgData);
+
+			clipboard.Image = image;
+		}
     }
 }
